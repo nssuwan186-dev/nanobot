@@ -1,7 +1,5 @@
 x-common-config: &common-config
-  # เปลี่ยนมาใช้ Image แทนการ Build เองในเครื่อง
-  # (อย่าลืมเปลี่ยน your-github-username เป็นชื่อผู้ใช้ GitHub ของคุณ)
-  image: ghcr.io/your-github-username/nanobot:latest
+  image: ghcr.io/nssuwan186-dev/nanobot:latest
   volumes:
     - ~/.nanobot:/home/nanobot/.nanobot
   cap_drop:
