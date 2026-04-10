@@ -1,7 +1,7 @@
 x-common-config: &common-config
-  build:
-    context: .
-    dockerfile: Dockerfile
+  # เปลี่ยนมาใช้ Image แทนการ Build เองในเครื่อง
+  # (อย่าลืมเปลี่ยน your-github-username เป็นชื่อผู้ใช้ GitHub ของคุณ)
+  image: ghcr.io/your-github-username/nanobot:latest
   volumes:
     - ~/.nanobot:/home/nanobot/.nanobot
   cap_drop:
@@ -32,8 +32,7 @@ services:
   nanobot-api:
     container_name: nanobot-api
     <<: *common-config
-    command:
-      ["serve", "--host", "0.0.0.0", "-w", "/home/nanobot/.nanobot/api-workspace"]
+    command:["serve", "--host", "0.0.0.0", "-w", "/home/nanobot/.nanobot/api-workspace"]
     restart: unless-stopped
     ports:
       - 127.0.0.1:8900:8900
